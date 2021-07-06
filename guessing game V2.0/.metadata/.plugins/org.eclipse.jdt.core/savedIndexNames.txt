@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+D:\JAVA\Toyunu\.metadata\.plugins\org.eclipse.jdt.core
+2393732938.index
+2954725227.index

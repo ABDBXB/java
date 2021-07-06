@@ -1,0 +1,37 @@
+package oyun;
+
+import java.util.Random;
+import java.util.Scanner;
+public class ORclass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int hak=5,sayi,gsayi;
+		Scanner scan=new Scanner(System.in);
+		Random rand=new Random();
+		gsayi=rand.nextInt(50)+1;
+		level:
+			System.out.println("level is here");
+		do {
+		System.out.println("1-50 arasi sayi girinz:");
+		sayi=scan.nextInt();
+		if(sayi==gsayi) {
+			System.out.println("doðru");
+			break;
+		}
+		else if(sayi>gsayi) {
+			System.out.println("sayi kucut" + --hak + gsayi);
+		}
+		else if(sayi<gsayi) {
+			System.out.println("sayi buyutun" + --hak + gsayi);
+		}
+		if(hak==0) {
+			System.out.println("kaybettin");
+			continue level;
+		}
+			
+			
+		}while(hak>0);
+	}
+
+}

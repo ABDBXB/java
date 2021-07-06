@@ -1,1 +1,1 @@
-Open The explanation Folder And You Will understand How Prgoram Work 
+Open The explanation Folder And You Will understand How The Program Work 

@@ -1,0 +1,84 @@
+package adamasmaca;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Mainclass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// araclar
+		Scanner scan=new Scanner(System.in);
+		Random rand=new Random();
+		//diziler
+		String Esya[]= {"sandalye","tarak","masa","kalem","defter","silgi","harddisk","fare","kalem"};
+		String Hayvanlar[]= {"maymun","aslan","fare","fil","timsah","kunduz","kaplan","tavus","tavuk"};
+		String Dizi[]=new String[Esya.length];
+				
+		//int elemanlar
+		int Ssecme,Kuzunluk,Kkelime,puan=0,hak=0,dogru=0,ikincido=0,secenek=0;                          /*Sseme:seçenek seçmek*//*Kkelime:kaçýncý kelime bilen*/
+		//stringelemanlarý
+		String dizi=null,Tkelime;                                    /*Tutulan kelime*/
+
+		do {	
+		//dizi seçmek
+		Ssecme=rand.nextInt(2);
+		if(Ssecme==0){dizi="Eþya";for (int i = 0; i < Esya.length; i++) {Dizi[i]=Esya[i];}} 
+		if (Ssecme==1){dizi="Hyavan";for (int i = 0; i < Hayvanlar.length; i++) {Dizi[i]=Hayvanlar[i];}}
+		Kkelime=rand.nextInt(Dizi.length);
+		Tkelime=Dizi[Kkelime];
+		Kuzunluk=Tkelime.length();
+		/*Dizi*/char altcizgi[]=new char[Kuzunluk];
+				
+		for (int i = 0; i < altcizgi.length; i++) {
+					altcizgi[i]='-';
+	}
+		hak=Kuzunluk;
+		do {
+			System.out.println(/*"/"+Tkelime +"/"+*/Kuzunluk+" harfli bir "+dizi+" adý: ");
+			for (int i = 0; i < altcizgi.length; i++) {
+				System.out.print(altcizgi[i]+" ");
+			}
+		char harf=scan.next().toLowerCase().charAt(0);
+		int hata=1;
+		for (int i = 0; i < altcizgi.length; i++) {
+			while(altcizgi[i]==harf) {System.out.println("bu harf önceden girilmiþ"); harf=scan.next().toLowerCase().charAt(0);}
+			if(altcizgi[i]!=harf){
+				if(Tkelime.charAt(i)==harf) {
+						altcizgi[i]=harf;
+						puan+=10;
+						dogru+=1;
+						hata=0;
+			}
+			}
+		}
+					
+			if(hata==1) {hak-=1; puan-=10;}
+			System.out.println("puan:"+puan+"  Kalan hak: "+ hak);
+			if(hak==Kuzunluk && puan==10*Kuzunluk) {System.out.println("TEBRÝKLER OYUNU KAZANDINIZ"+" 		puanýnýz:" + (Kuzunluk*10)); break;}
+			else if(dogru==Kuzunluk && puan<(10*Kuzunluk)) {System.out.println("TEBRÝKLER KELÝMEYÝ BÝLDÝNÝZ"); break;}
+					
+			if(hak==0) {
+				System.out.println("kaybettiniz");
+				System.out.println("Bir Daha Oynamak Ýstiyor musunz? Evet=1,Hayir=2");
+				secenek=scan.nextInt();
+				while (secenek!=1 && secenek!=2) {
+				System.out.println("Yanliþ Tuþlama Yaptiniz");
+				System.out.println("Bir Daha Oynamak Ýstiyor musunz? Evet=1,Hayir=2");
+				secenek=scan.nextInt();
+					}
+				if(secenek==1) {
+					puan=0;
+					ikincido=2;
+				}
+				else if(secenek==2) {
+					hak=0;
+					ikincido=1;
+				}
+			}
+				}while(hak>0);
+			
+				}while(ikincido>1);		
+	}
+
+}
